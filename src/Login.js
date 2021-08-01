@@ -1,14 +1,20 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 
-class Login extends Component{
-
-    render(){
-        return(
-            <div>
-
+function LoginForm() {
+    return(
+        <form>
+            <div className="login-form">
+                <label htmlFor="name">Name :</label>
+                <input type="text" name="name" id="name"/>
+                <label htmlFor="email">Email :</label>
+                <input type="email" name="email" id="email"/>
+                <label htmlFor="password">Password :</label>
+                <input type="password" name="password" id="password"/>
             </div>
-        )
-    }
+        </form>
+    )
 }
 
-export default Login;
+
+
+export default LoginForm;

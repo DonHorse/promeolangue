@@ -30,3 +30,34 @@ a.current{
   list-style: none;
   margin: 10px;
 }
+
+.register-form{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  margin-right: 40%;
+  margin-left: 40%;
+  border: solid black ;
+  padding: 10px;
+}
+.register-form input {
+  margin-bottom: 30px;
+}
+.register-form select {
+  margin-bottom: 30px;
+}
+.article-form{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  margin-right: 40%;
+  margin-left: 40%;
+  border: solid black ;
+  padding: 10px;
+}
+.article-form input {
+  margin-bottom: 30px;
+}
+.article-form select {
+  margin-bottom: 30px;
+}

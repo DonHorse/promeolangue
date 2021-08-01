@@ -7,7 +7,7 @@ import Login from "./Login";
 import Questionnaire from "./Questionnaire";
 import QuestionnaireMaker from "./QuestionnaireMaker";
 import Header from "./Header";
-import "./server/server";
+
 
 import{BrowserRouter as Router, Route, Switch} from "react-router-dom";
 

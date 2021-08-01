@@ -1,9 +1,55 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import Axios from 'axios';
 
-function Article(){
+function ArticleForm(){
+
+    const [title, setTitle] = useState('')
+    const [img, setImg] = useState('')
+    const [text, setText] = useState('')
+
+    const submitReview = () => {
+        Axios.post("http://localhost:3001/api/insert", {
+            title : title,
+            img : img,
+            text : text
+        }).then(() => {
+            console.log("article enregistré !")
+        });
+    };
+
     return(
-        <h1>Article</h1>
+        <form>
+            <div className="article-form">
+                <label htmlFor="title">Titre de l'article : </label>
+                <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    onChange={(e) => {
+                    setTitle(e.target.value);
+                }}/>
+                <label htmlFor="text">Ajouter une image : </label>
+                <input
+                    type="file"
+                    name="img"
+                    id="img"
+                    onChange={(e) => {
+                    setImg(e.target.value);
+                }}/>
+                <label htmlFor="text">Contenu de l'article : </label>
+                <input
+                    type="text"
+                    name="text"
+                    id="text"
+                    onChange={(e) => {
+                    setText(e.target.value);
+                }}/>
+
+                <button onClick={submitReview()}>Submit</button>
+                <input type="reset"/>
+            </div>
+        </form>
     )
 }
 
-export default Article;
+export default ArticleForm;
