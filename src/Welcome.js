@@ -20,6 +20,7 @@ class Welcome extends Component {
                 <h1>Bienvenue {this.props.name}</h1>
                 <p>Mon compteur : {this.state.count}</p>
                 <button onClick={() => this.addOne()}>Ajouter 1</button>
+
             </div>
 
         );
