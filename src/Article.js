@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import Axios from 'axios';
 
 function ArticleForm(){
@@ -7,13 +7,13 @@ function ArticleForm(){
     const [img, setImg] = useState('')
     const [text, setText] = useState('')
 
-    const submitReview = () => {
+    const addArticle = () => {
         Axios.post("http://localhost:3001/api/insert", {
             title : title,
             img : img,
-            text : text
+            text : text,
         }).then(() => {
-            console.log("article enregistré !")
+            alert("article enregistré !")
         });
     };
 
@@ -45,7 +45,7 @@ function ArticleForm(){
                     setText(e.target.value);
                 }}/>
 
-                <button onClick={submitReview()}>Submit</button>
+                <button onClick={addArticle}>Ajouter un article</button>
                 <input type="reset"/>
             </div>
         </form>
