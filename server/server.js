@@ -27,7 +27,7 @@ app.post("/api/insert", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.send("Ajouté !")
+            res.send("Ajouté !");
         }
     });
 });
