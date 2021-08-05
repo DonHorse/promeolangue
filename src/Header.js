@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 function Header(){
     return(
-        <div className="nav-bar">
+        <nav>
             <div className="menu">
                 <ul className="menu-list">
                     <NavLink exact activeClassName="current" to="/">
@@ -39,7 +39,7 @@ function Header(){
                     </NavLink>
                 </ul>
             </div>
-        </div>
+        </nav>
 
     )
 }
