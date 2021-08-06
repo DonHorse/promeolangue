@@ -1,0 +1,1 @@
+// pied de page avec information modifiable par l'admin
