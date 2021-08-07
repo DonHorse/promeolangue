@@ -3,8 +3,11 @@
     font-family: "Fira Sans", Arial, sans-serif;
 }
 
-.nav {
+nav {
     background-color: #095776;
+    overflow: hidden;
+    position: sticky;
+
 }
 
 .menu {
@@ -15,6 +18,10 @@
 .user-gestion {
     overflow: hidden;
     background-color: #095776;
+}
+.menuANDuser{
+    justify-content: space-between;
+    display: flex;
 }
 
 .user-gestion a {
@@ -36,7 +43,7 @@
     text-decoration: none;
 }
 
-/* The submenu */
+/* submenu */
 .submenu {
     float: left;
     overflow: hidden;
@@ -48,28 +55,36 @@
     border: none;
     outline: none;
     color: white;
-    padding: 14px 16px;
+    padding: 24px 16px;
     background-color: inherit;
     font-family: inherit;
-    margin: 0;
+
 }
 
 /* Add a red background color to navigation links on hover */
 .menu a:hover, .submenu:hover .submenubtn {
     background-color: red;
+    border-radius: 10px 10px 10px 10px;
 }
 
-/* Style the submenu content - positioned absolute */
+.user-gestion a:hover {
+    background-color: red;
+    border-radius: 10px 10px 10px 10px;
+}
+
+
+/* position des sous menus*/
 .submenu-content {
     display: none;
-    position: absolute;
+    position: fixed;
     left: 0;
     background-color: red;
     width: 100%;
     z-index: 1;
+    border: 1px solid #03353b;
 }
 
-/* Style the submenu links */
+/* style des navlink */
 .submenu-content a {
     float: left;
     color: white;

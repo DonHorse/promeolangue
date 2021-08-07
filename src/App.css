@@ -2,8 +2,20 @@
   text-align: center;
 }
 
+
+ img.logo {
+   max-height: 100px;
+   border-right: 1px solid #21a1d5;
+   width: auto;
+   float: left;
+ }
+
+ .header{
+   overflow: hidden;
+ }
 a.current{
   background-color: #21a1d5;
+  border-radius: 10px;
 }
 
 .nav-bar{
@@ -13,12 +25,17 @@ a.current{
 
 .menu-list{
   display: flex;
-
+  padding-left: 0px;
 }
 
 .menu-list li{
   list-style: none;
   margin: 10px;
+}
+.menu-list ul{
+  list-style: none;
+  margin-left: 0px;
+  padding-left: 0px;
 }
 
 .user-gestion-list{
@@ -62,7 +79,4 @@ a.current{
   margin-bottom: 30px;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-}
+
