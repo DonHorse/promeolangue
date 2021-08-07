@@ -3,7 +3,7 @@
 }
 
 a.current{
-  background-color: #75d26b;
+  background-color: #21a1d5;
 }
 
 .nav-bar{
@@ -60,4 +60,9 @@ a.current{
 }
 .article-form select {
   margin-bottom: 30px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
 }

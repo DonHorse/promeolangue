@@ -17,7 +17,13 @@ function App() {
         <Router
         forceRefresh={true}
         >
+
             <Header />
+            <br/>
+            <br/>
+            <br/>
+
+
 
             <Switch>
                 <Route path="/" exact component={Welcome}/>
