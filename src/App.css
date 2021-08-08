@@ -25,7 +25,7 @@ a.current{
 
 .menu-list{
   display: flex;
-  padding-left: 0px;
+  padding-left: 0;
 }
 
 .menu-list li{
@@ -34,8 +34,8 @@ a.current{
 }
 .menu-list ul{
   list-style: none;
-  margin-left: 0px;
-  padding-left: 0px;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .user-gestion-list{
@@ -80,6 +80,7 @@ a.current{
 }
 
 .footer{
+  overflow: hidden;
   background-color: red;
   color: white;
   display: flex;
@@ -135,7 +136,8 @@ a.current{
   margin-bottom: 15px;
   box-sizing:border-box;
 }
-.login-form input[type="submit"] {
+.login-form button,
+.registration-form button{
   width: 100%;
   padding: 15px;
   background-color: #535b63;
@@ -144,4 +146,19 @@ a.current{
   cursor: pointer;
   font-weight: bold;
   color: #ffffff;
+}
+.mainBody{
+border-bottom: 5px solid rgba(9, 87, 118, 0.22);
+}
+
+.mainBodyTitle{
+font-size: 30px;
+}
+
+.mainBodyText{
+  text-align: justify;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-bottom: 5%;
+  margin-top: 5%;
 }

@@ -1,18 +1,39 @@
 // pied de page avec information modifiable par l'admin
-import React from "react";
+import React, {useState} from "react";
 import './App.css';
+import Axios from "axios";
 
 function Footer() {
+    const [Info, setInfo] = useState([]);
+    const getInfo = () => {
+        Axios.get("http://localhost:3001/api/homeInfo").then((response) => {
+            setInfo(response.data);
+        });
+
+    };
     return (
         <div className="footer">
-            <div className="footer1">
-
+            {getInfo()}
+            <div key="infos1" className="footer1">
+                {Info.map((val, key) =>{
+                    return(
+                        <div>{val.footer1}</div>
+                    )
+                })}
             </div>
-            <div className="footer2">
-
+            <div key="infos2" className="footer2">
+                {Info.map((val, key) =>{
+                    return(
+                        <div>{val.footer2}</div>
+                    )
+                })}
             </div>
-            <div className="footer3">
-
+            <div key="infos3" className="footer3">
+                {Info.map((val, key) =>{
+                    return(
+                        <div>{val.footer3}</div>
+                    )
+                })}
             </div>
         </div>
     );

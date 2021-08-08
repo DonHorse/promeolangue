@@ -20,13 +20,13 @@ app.use(
         credentials: true,
     }
 ));
-
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
     session({
         key: "userId",
+        secret: "horse",
         resave: false,
         saveUninitialized: false,
         cookie: {
@@ -75,8 +75,8 @@ app.post("/register", (req, res) => {
         }
 
         db.query(
-            "INSERT INTO users (FirstName, LastName, email, password, role) VALUES (?,?,?,?,?)",
-            [firstname, lastname, emailrname, hash, role],
+            "INSERT INTO user (FirstName, LastName, email, password, role) VALUES (?,?,?,?,?)",
+            [firstname, lastname, email, hash, role],
             (err, result) => {
                 console.log(err);
             }
@@ -93,12 +93,12 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
 
     db.query(
-        "SELECT * FROM users WHERE username = ?;",
-        username,
+        "SELECT * FROM user WHERE email = ?;",
+        email,
         (err, result) => {
             if (err) {
                 res.send({ err: err });
@@ -111,11 +111,11 @@ app.post("/login", (req, res) => {
                         console.log(req.session.user);
                         res.send(result);
                     } else {
-                        res.send({ message: "Wrong username/password combination!" });
+                        res.send({ message: "Wrong email/password combination!" });
                     }
                 });
             } else {
-                res.send({ message: "User doesn't exist" });
+                res.send({ message: "mail doesn't exist" });
             }
         }
     );

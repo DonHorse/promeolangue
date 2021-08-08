@@ -14,10 +14,10 @@ function Login() {
             email: email,
             password: password,
         }).then((response) => {
-            if (response.data.message) {
+            if (response) {
                 setLoginStatus(response.data.message);
             } else {
-                setLoginStatus(response.data[0].username);
+                setLoginStatus(response.data[0].firstname);
             }
         });
 
@@ -25,35 +25,36 @@ function Login() {
 
     useEffect(() => {
         Axios.get("http://localhost:3001/login").then((response) => {
-            if (response.data.loggedIn == true) {
-                setLoginStatus(response.data.user[0].username);
+            if (response.data.loggedIn === true) {
+                setLoginStatus(response.data.user[0].firstname);
             }
         });
     }, []);
 
     return (
         <div className="login-form">
-            <h1>Login</h1>
-            <input
-                type="email"
-                placeholder="xyz@exemple.mail"
-                onChange={(e) => {
-                    setEmail(e.target.value);
-                }}
-            />
-            <input
-                type="password"
-                placeholder="Password..."
-                onChange={(e) => {
-                    setPassword(e.target.value);
-                }}
-            />
-            <button onClick={login}> Login </button>
-
+            <form>
+                <h1>Login</h1>
+                <input
+                    type="email"
+                    placeholder="xyz@exemple.mail"
+                    onChange={(e) => {
+                        setEmail(e.target.value);
+                    }}
+                />
+                <input
+                    type="password"
+                    placeholder="Password..."
+                    autoComplete="on"
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                    }}
+                />
+                <button onClick={login}> Login </button>
+            </form>
             <h1>{loginStatus}</h1>
-
         </div>
 
     )
-};
+}
 export default Login;

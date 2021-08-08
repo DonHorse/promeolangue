@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Axios from "axios";
 import "./App.css";
 
@@ -6,15 +6,15 @@ export default function Registration() {
     const [firstnameReg, setFirstnameReg] = useState("");
     const [lastnameReg, setLastnameReg] = useState("");
     const [emailReg, setEmailReg] = useState("");
-    const [roleReg, setRoleReg] = useState("");
+    const [roleReg, setRoleReg] = useState("utilisateur");
     const [passwordReg, setPasswordReg] = useState("");
 
     Axios.defaults.withCredentials = true;
 
     const register = () => {
         Axios.post("http://localhost:3001/register", {
-            FirstName: firstnameReg,
-            LastName : lastnameReg,
+            firstname: firstnameReg,
+            lastname : lastnameReg,
             email: emailReg,
             password: passwordReg,
             role : roleReg,
@@ -52,14 +52,12 @@ export default function Registration() {
                         }}
                     />
 
-                    <select
-                        type="radio"
-                        onChange={(e) => {
-                            setRoleReg(e.target.value);
-                        }}>
+                    <label>Type d'utilisateur :</label>
+                    <select onChange={(e) => {
+                            setRoleReg(e.target.value); }}>
                         <option value="utilisateur">Utilisateur</option>
-                        <option value="formateur">formateur</option>
-                        <option value="administrateur">administrateur</option>
+                        <option value="formateur">Formateur</option>
+                        <option value="administrateur">Administrateur</option>
                     </select>
 
                     <label>Password</label>
