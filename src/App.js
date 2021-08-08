@@ -7,9 +7,11 @@ import Login from "./Login";
 import Questionnaire from "./Questionnaire";
 import QuestionnaireMaker from "./QuestionnaireMaker";
 import Header from "./Header";
+import Footer from "./Footer";
 
 
 import{BrowserRouter as Router, Route, Switch} from "react-router-dom";
+
 
 function App() {
   return (
@@ -37,6 +39,7 @@ function App() {
                 <Route path="/" component={() => <div className="Erreur 404">ERREUR 404</div>}/>
             </Switch>
 
+            <Footer />
         </Router>
 
       </div>
