@@ -37,6 +37,9 @@ function Header(){
                                         <NavLink exact activeClassName="current" to="/QuestionnaireMaker">
                                             <li >QuestionnaireMaker</li>
                                         </NavLink>
+                                        <NavLink exact activeClassName="current" to="/Administration">
+                                            <li >Administration</li>
+                                        </NavLink>
                                     </div>
                                 </div>
 

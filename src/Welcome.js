@@ -1,31 +1,33 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
+import Axios from "axios";
 
-class Welcome extends Component {
-    constructor() {
-        super();
-        this.state = {
-            count: 0
-        }
-    }
-//méthode de class (une fonction type POO)
-    addOne(){
-        this.setState({
-            count: this.state.count +1
+function Welcome (){
+    const [Info, setInfo] = useState([]);
+    const getInfo = () => {
+        Axios.get("http://localhost:3001/api/homeInfo").then((response) => {
+            setInfo(response.data);
         });
-    }
+    };
 
-    render() {
-        return(
-            <div>
-                <h1>Bienvenue {this.props.name}</h1>
-                <p>Mon compteur : {this.state.count}</p>
-                <button onClick={() => this.addOne()}>Ajouter 1</button>
-
+    return(
+        <div  className="mainBody">
+            <div onLoad={getInfo} className="mainBodyTitle">
+                {Info.map((val, key) =>{
+                    return(
+                        <div>{val.bodyTitle}</div>
+                    )
+                })}
             </div>
-
-        );
-    }
-
+            <br/>
+            <div onLoad={getInfo} className="mainBodyText">
+                {Info.map((val, key) =>{
+                    return(
+                        <div>{val.body1}</div>
+                    )
+                })}
+            </div>
+        </div>
+    )
 }
 
 export default Welcome;

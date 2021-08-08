@@ -8,6 +8,7 @@ import Questionnaire from "./Questionnaire";
 import QuestionnaireMaker from "./QuestionnaireMaker";
 import Header from "./Header";
 import Footer from "./Footer";
+import AdminForm from "./Admin-Modification";
 
 
 import{BrowserRouter as Router, Route, Switch} from "react-router-dom";
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/QuestionnaireMaker" component={QuestionnaireMaker}/>
                 <Route path="/Login" component={Login}/>
                 <Route path="/Register" component={Register}/>
+                <Route path="/Administration" component={AdminForm}/>
                 <Route path="/" component={() => <div className="Erreur 404">ERREUR 404</div>}/>
             </Switch>
 
