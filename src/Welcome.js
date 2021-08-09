@@ -10,7 +10,7 @@ function Welcome (){
     };
 
     return(
-        <body>
+        <div className="body">
             <div  className="mainBody">
                 {getInfo()}
                 <div key="bodytitle" className="mainBodyTitle">
@@ -23,20 +23,20 @@ function Welcome (){
                 </div>
                 <br/>
                 <div key="bodytext" className="mainBodyText">
-                    <p>
+
                     {Info.map((val, key) =>{
                         return(
                         <div>{val.body1}</div>
                         )
                     })}
-                    </p>
+
 
                 </div>
             </div>
             <div className="Carroussel">
 
             </div>
-        </body>
+        </div>
     )
 }
 

@@ -1,17 +1,25 @@
 .App {
   text-align: center;
+  overflow: hidden;
+  position: static;
+  margin-top: 110px;
+  margin-bottom: 100px;
 }
 
  img.logo {
    max-height: 110px;
-   border-right: 1px solid #21a1d5;
+   border-right: 1px solid white;
    width: auto;
    float: left;
    margin-right: 10px;
  }
 
- .header{
-   overflow: hidden;
+.header{
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
  }
 a.current{
   background-color: #21a1d5;
@@ -79,17 +87,19 @@ a.current{
   margin-bottom: 30px;
 }
 
+
 .footer{
   overflow: hidden;
   background-color: red;
   color: white;
   display: flex;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  min-height: 40px;
+  min-height: 50px;
   width: 100%;
   border-top: 5px solid #21a1d5;
+
 }
 
 .footer1{
@@ -109,7 +119,8 @@ a.current{
 }
 
 .login-form,
-.registration-form{
+.registration-form,
+.admin-form{
   width: 300px;
   margin: 0 auto;
   font-family: Tahoma, Geneva, sans-serif;
@@ -119,17 +130,26 @@ a.current{
 .login-form h1,
 .registration-form h1{
   text-align: center;
-  color: #4d4d4d;
+  color: #03353b;
   font-size: 24px;
   padding: 20px 0 20px 0;
 }
+.admin-form textarea{
+  min-height: 50px;
+  width: 296px;
+  max-width: 296px;
+  min-width: 296px;
+}
+
 .login-form input[type="password"],
 .login-form input[type="text"],
 .login-form input[type="email"],
 .registration-form input[type="password"],
 .registration-form input[type="text"],
 .registration-form input[type="email"],
-.registration-form select{
+.registration-form select,
+.admin-form input[type="reset"],
+.admin-form input[type="text"]{
   width: 100%;
   padding: 15px;
   border: 1px solid #dddddd;
@@ -137,10 +157,11 @@ a.current{
   box-sizing:border-box;
 }
 .login-form button,
-.registration-form button{
+.registration-form button,
+.admin-form button{
   width: 100%;
   padding: 15px;
-  background-color: #535b63;
+  background-color: #03353b;
   border: 0;
   box-sizing: border-box;
   cursor: pointer;

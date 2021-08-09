@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Axios from 'axios';
-
+import './App.css';
 function AdminForm(){
 
     const [bodyTitle, setBodyTitle] = useState('');
@@ -9,13 +9,13 @@ function AdminForm(){
     const [footer2, setFooter2] = useState('');
     const [footer3, setFooter3] = useState('');
 
-    const [placeholderInfo, setPlaceholderInfo] = useState([]);
+    /*const [placeholderInfo, setPlaceholderInfo] = useState([]);
 
     const getPlaceholderInfos = () => {
         Axios.get("http://localhost:3001/api/homeInfo").then((response) => {
             setPlaceholderInfo(response.data);
         });
-    };
+    };*/
 
     const addAdminModif = () => {
         Axios.post("http://localhost:3001/api/homeModif", {
@@ -31,8 +31,8 @@ function AdminForm(){
     };
 
     return(
-        <form>
-            <div className="admin-form">
+        <div className="admin-form">
+            <form>
                 <label htmlFor="title">Titre de page : </label>
                 <input
                     type="text"
@@ -51,6 +51,12 @@ function AdminForm(){
                         setBody1(e.target.value);
                     }}/>
                 <label htmlFor="text">Pied de page gauche : </label>
+                <textarea
+                    name="footer1"
+                    id="footer1"
+                    onChange={(e) => {
+                        setFooter1(e.target.value);
+                    }}/>
                 <input
                     type="text"
                     name="footer1"
@@ -76,9 +82,10 @@ function AdminForm(){
                     }}/>
 
                 <button onClick={addAdminModif}>Valider les modifications</button>
+
                 <input type="reset"/>
-            </div>
-        </form>
+            </form>
+        </div>
     )
 }
 
