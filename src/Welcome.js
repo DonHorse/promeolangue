@@ -30,7 +30,6 @@ function Welcome (){
                         )
                     })}
 
-
                 </div>
             </div>
             <div className="Carroussel">
