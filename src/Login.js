@@ -17,7 +17,7 @@ function Login() {
             if (response) {
                 setLoginStatus(response.data.message);
             } else {
-                setLoginStatus(response.data[0].firstname);
+                setLoginStatus(response.data[0].Firstname);
             }
         });
 

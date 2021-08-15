@@ -2,11 +2,9 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
-
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
@@ -97,8 +95,8 @@ app.post("/login", (req, res) => {
     const password = req.body.password;
 
     db.query(
-        "SELECT * FROM user WHERE email = ?;",
-        email,
+        "SELECT * FROM user WHERE email = ? AND password = ?",
+        [email, password],
         (err, result) => {
             if (err) {
                 res.send({ err: err });
