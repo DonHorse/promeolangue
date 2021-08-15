@@ -12,7 +12,7 @@ function Footer() {
 
     };
     return (
-        <div className="footer">
+        <div key="footer" className="footer">
             {getInfo()}
             <div key="infos1" className="footer1">
                 {Info.map((val, key) =>{
