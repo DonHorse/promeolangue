@@ -57,17 +57,16 @@ export default function Registration() {
                             setRoleReg(e.target.value); }}>
                         <option value="utilisateur">Utilisateur</option>
                         <option value="formateur">Formateur</option>
-                        <option value="administrateur">Administrateur</option>
                     </select>
 
                     <label>Password</label>
                     <input
-                        type="text"
+                        type="password"
                         onChange={(e) => {
                             setPasswordReg(e.target.value);
                         }}
                     />
-                    <button onClick={register}> Register </button>
+                    <button  onClick={register}> Register </button>
                 </form>
             </div>
 

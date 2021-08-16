@@ -8,7 +8,7 @@ function Questionnaire(){
     return(
         <div>
             <h1>Questionnaire {slug}</h1>
-
+            <p>Work in progress.. </p>
         </div>
 
     )

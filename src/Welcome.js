@@ -33,7 +33,7 @@ function Welcome (){
                 </div>
             </div>
             <div className="Carroussel">
-
+                <h1>Work in progress ... </h1>
             </div>
         </div>
     )

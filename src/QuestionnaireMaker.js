@@ -2,7 +2,10 @@ import React from "react";
 
 function QuestionnaireMaker(){
     return(
-        <h1>QuestionnaireMaker</h1>
+        <div>
+            <h1>Questionnaire Maker</h1>
+            <p>Work in progress.. </p>
+        </div>
     )
 }
 

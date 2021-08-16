@@ -125,9 +125,15 @@ a.current{
   margin: 0 auto;
   font-family: Tahoma, Geneva, sans-serif;
 
-
 }
+.contact-form{
+  width: 70%;
+  margin: 0 auto;
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
 .login-form h1,
+.contact-form h1,
 .registration-form h1{
   text-align: center;
   color: #03353b;
@@ -140,6 +146,12 @@ a.current{
   max-width: 296px;
   min-width: 296px;
 }
+.contact-form textarea{
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100px;
+  font-family: Tahoma, Geneva, sans-serif;
+}
 
 .login-form input[type="password"],
 .login-form input[type="text"],
@@ -148,6 +160,8 @@ a.current{
 .registration-form input[type="text"],
 .registration-form input[type="email"],
 .registration-form select,
+.contact-form input[type="text"],
+.contact-form input[type="email"],
 .admin-form input[type="reset"],
 .admin-form input[type="text"]{
   width: 100%;
@@ -158,6 +172,7 @@ a.current{
 }
 .login-form button,
 .registration-form button,
+.contact-form button,
 .admin-form button{
   width: 100%;
   padding: 15px;

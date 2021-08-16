@@ -1,5 +1,5 @@
 /* Nav bar on header*/
-*{
+* {
     font-family: "Fira Sans", Arial, sans-serif;
 }
 
@@ -15,11 +15,12 @@ nav {
     background-color: #095776;
 }
 
-.user-gestion {
+.user-gestion, .user-gestion button {
     overflow: hidden;
     background-color: #095776;
 }
-.menuANDuser{
+
+.menuANDuser {
     justify-content: space-between;
     display: flex;
 }
@@ -31,6 +32,16 @@ nav {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+}
+
+.user-gestion button {
+    float: left;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-radius: 10px;
 }
 
 /* Navlinks */
@@ -62,12 +73,12 @@ nav {
 }
 
 /* Add a red background color to navigation links on hover */
-.menu a:hover, .submenu:hover .submenubtn {
+.menu a:hover, .submenu:hover .submenubtn, .user-gestion button:hover {
     background-color: red;
     border-radius: 10px 10px 10px 10px;
 }
 
-.user-gestion a:hover {
+.user-gestion a:hover, {
     background-color: red;
     border-radius: 10px 10px 10px 10px;
 }
