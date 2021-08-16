@@ -1,6 +1,7 @@
 import './App.css';
 import Welcome from "./Welcome";
-import Article from "./Article";
+import Articles from "./Article";
+import ArticleMaker from "./ArticleMaker";
 import Contact from "./Contact";
 import Register from "./Register";
 import Login from "./Login";
@@ -17,8 +18,7 @@ import{BrowserRouter as Router, Route, Switch} from "react-router-dom";
 function App() {
   return (
       <div className="App">
-        <Router
-        forceRefresh={true}
+        <Router forceRefresh={true}
         >
 
             <Header />
@@ -26,15 +26,14 @@ function App() {
             <br/>
             <br/>
 
-
-
             <Switch>
                 <Route path="/" exact component={Welcome}/>
-                <Route path="/Article" component={Article}/>
+                <Route path="/Article" component={Articles}/>
                 <Route path="/Contact" component={Contact}/>
                 <Route path="/Questionnaire" component={Questionnaire}/>
                 <Route path="/Questionnaire/:slug" component={Questionnaire}/>
                 <Route path="/QuestionnaireMaker" component={QuestionnaireMaker}/>
+                <Route path="/ArticleMaker" component={ArticleMaker}/>
                 <Route path="/Login" component={Login}/>
                 <Route path="/Register" component={Register}/>
                 <Route path="/Administration" component={AdminForm}/>

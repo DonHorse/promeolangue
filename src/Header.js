@@ -1,9 +1,41 @@
-import React from "react";
+
 import './Header.css';
 import { NavLink } from 'react-router-dom';
 import logo from './logo.png';
+import Axios from "axios";
+import React, {useEffect, useState} from "react";
+import {useHistory} from "react-router-dom";
+
+/*function Logout () {
+
+    Axios.defaults.withCredentials = true;
+    Axios.get("http://localhost:3001/logout").then((response) => {
+        if (response) {
+            console.log(response)
+        }
+    });
+};
+*/
 
 function Header(){
+
+    let history = useHistory();
+    const [loginStat, setLoginStat] = useState(false);
+
+    Axios.defaults.withCredentials = true;
+
+    useEffect(() => {
+        Axios.get("http://localhost:3001/login").then((response) => {
+            if (response.data.loggedIn === true) {
+                setLoginStat(true);
+            } else{
+                setLoginStat(false);
+            }
+        });
+    });
+
+
+
     return(
         <div className="header">
 
@@ -23,6 +55,9 @@ function Header(){
                                         <NavLink exact activeClassName="current" to="/Questionnaire">
                                             <li >Questionnaires</li>
                                         </NavLink>
+                                        <NavLink exact activeClassName="current" to="/Article">
+                                            <li >Articles</li>
+                                        </NavLink>
                                         <NavLink exact activeClassName="current" to="/Contact">
                                             <li >Contacts</li>
                                         </NavLink>
@@ -31,11 +66,11 @@ function Header(){
                                 <div className="submenu">
                                     <button className="submenubtn">Espace Administration <i className="fa fa-caret-down"></i></button>
                                     <div className="submenu-content">
-                                        <NavLink exact activeClassName="current" to="/Article">
-                                            <li >Articles</li>
+                                        <NavLink exact activeClassName="current" to="/ArticleMaker">
+                                            <li >Article Maker</li>
                                         </NavLink>
                                         <NavLink exact activeClassName="current" to="/QuestionnaireMaker">
-                                            <li >QuestionnaireMaker</li>
+                                            <li >Questionnaire Maker</li>
                                         </NavLink>
                                         <NavLink exact activeClassName="current" to="/Administration">
                                             <li >Administration</li>
@@ -48,9 +83,14 @@ function Header(){
 
                         <div className="user-gestion">
                             <ul className="user-gestion-list">
-                                <NavLink exact activeClassName="current" to="/Login">
-                                    <li >Login</li>
-                                </NavLink>
+                                    {loginStat === false && (
+                                        <NavLink exact activeClassName="current" to="/Login">
+                                            <li >Login</li>
+                                        </NavLink>
+                                    )}
+                                    {loginStat === true && (
+                                        <button onClick={() => history.push('/')} /*onClick={Logout}*/>Logout</button>
+                                    )}
                                 <NavLink exact activeClassName="current" to="/Register">
                                     <li >Register</li>
                                 </NavLink>

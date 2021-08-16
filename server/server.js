@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-const jwt = require("jsonwebtoken")
+const nodemailer = require("nodemailer");
 
 
 app.use(express.json());
@@ -27,19 +27,58 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            expires: 60 * 60 * 24,
+            expires: 60 * 60 * 24 * 7,
         },
     })
 );
 
 
 const db = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password:"root",
-        database:"promeo_langue",
-    });
+    host: "localhost",
+    user: "root",
+    password:"root",
+    database:"promeo_langue",
+});
 
+const contactEmail = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: "promeo.langue.dev@gmail.com",
+        pass: "Promeo/60",
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+});
+
+contactEmail.verify((error) => {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log("Ready to Send");
+    }
+});
+
+app.post("/contact", (req, res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    const message = req.body.message;
+    const mail = {
+        from: name,
+        to: "promeo.langue.dev@gmail.com",
+        subject: "Promeo Langue - Contact message",
+        html: `<p>Mme/Mr {name}</p>
+           <p>Depuis l'adresse :  ${email}</p>
+           <p>A laissé le message suivant: ${message}</p>`,
+    };
+    contactEmail.sendMail(mail, (error) => {
+        if (error) {
+            res.json({ status: "ERROR" });
+        } else {
+            res.json({ status: "Message Sent" });
+        }
+    });
+});
 
 app.post("/api/insert", (req, res) => {
     const title = req.body.title;
@@ -51,12 +90,12 @@ app.post("/api/insert", (req, res) => {
         "INSERT INTO articles (title, img, text) VALUES (?,?,?)",
         [title, img, text],
         (err, result) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.send("Ajouté !");
-        }
-    });
+            if (err) {
+                console.log(err);
+            } else {
+                res.send("Ajouté !");
+            }
+        });
 });
 
 app.post("/register", (req, res) => {
@@ -96,17 +135,11 @@ app.post("/login", (req, res) => {
             if (result.length > 0) {
                 bcrypt.compare(password, result[0].password, (error, response) => {
                     if (response) {
-
-
-                        const id = result[0].id
-                        const token = jwt.sign({id}, "jwtSecret", {
-                            expiresIn: 900,
-                        })
                         req.session.user= result;
                         console.log(req.session.user.email);
-                        res.json({auth : true, token: token, result: result});
+                        res.send(result);
 
-                    } else {
+                    } if (err) {
                         res.send({ message: "Mauvaise combinaison email/mot de passe" });
                     }
                 });
@@ -142,8 +175,16 @@ app.put("/api/homeModif", (req, res) => {
                 res.send(result);
             }
         });
- });
+});
 
+/*app.get("/logout", (req, res) => {
+    res.redirect('/Login');
+    req.session.destroy();
+    res.clearCookie("userId");
+    res.send({ loggedIn: false });
+
+});
+*/
 app.get('/api/homeInfo', (req, res) => {
     db.query("SELECT * FROM info_page", (err, result) => {
         if (err) {
