@@ -38,14 +38,12 @@ function Header(){
 
     return(
         <div className="header">
-
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
                 <nav>
                     <img className="logo" src={logo} alt="logo"/>
                     <div className="menuANDuser">
                         <div className="menu">
                             <ul className="menu-list">
-
                                 <NavLink exact activeClassName="current" to="/">
                                     <li >Accueil</li>
                                 </NavLink>
