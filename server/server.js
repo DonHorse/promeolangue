@@ -1,3 +1,4 @@
+// import des librairies
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
@@ -10,6 +11,7 @@ const saltRounds = 10;
 const nodemailer = require("nodemailer");
 
 
+// Paramétrages
 app.use(express.json());
 app.use(cors({
         origin: ["http://localhost:3000"],
@@ -20,6 +22,7 @@ app.use(cors({
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//session
 app.use(
     session({
         key: "userId",
@@ -32,7 +35,7 @@ app.use(
     })
 );
 
-
+// Connexion à mysql
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -40,6 +43,7 @@ const db = mysql.createConnection({
     database:"promeo_langue",
 });
 
+// Connexion à la boite mail d'envoie et reception
 const contactEmail = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -58,6 +62,11 @@ contactEmail.verify((error) => {
         console.log("Ready to Send");
     }
 });
+
+// CRUD
+
+// --------------------------------------------CREATE / POST-----------------------------------------------------------
+
 
 app.post("/contact", (req, res) => {
     const name = req.body.name;
@@ -80,11 +89,11 @@ app.post("/contact", (req, res) => {
     });
 });
 
+
 app.post("/api/insert", (req, res) => {
     const title = req.body.title;
     const img = req.body.img;
     const text = req.body.text;
-
 
     db.query(
         "INSERT INTO articles (title, img, text) VALUES (?,?,?)",
@@ -150,31 +159,15 @@ app.post("/login", (req, res) => {
     );
 });
 
+// ------------------------------------------------------READ / GET----------------------------------------------------
+
+
 app.get("/login", (req, res) => {
     if (req.session.user) {
         res.send({ loggedIn: true, user: req.session.user });
     } else {
         res.send({ loggedIn: false });
     }
-});
-
-app.put("/api/homeModif", (req, res) => {
-    const bodyTitle = req.body.bodyTitle;
-    const body1 = req.body.body1;
-    const footer1 = req.body.footer1;
-    const footer2 = req.body.footer2;
-    const footer3 = req.body.footer3;
-
-    db.query(
-        "UPDATE info-page SET (bodyTitle, body1, footer1, footer2, footer3) VALUES (?,?,?,?,?) WHERE id = 1",
-        [bodyTitle, body1, footer1, footer2, footer3],
-        (err, result) => {
-            if (err) {
-                console.log(err);
-            } else {
-                res.send(result);
-            }
-        });
 });
 
 /*app.get("/logout", (req, res) => {
@@ -185,6 +178,7 @@ app.put("/api/homeModif", (req, res) => {
 
 });
 */
+
 app.get('/api/homeInfo', (req, res) => {
     db.query("SELECT * FROM info_page", (err, result) => {
         if (err) {
@@ -194,7 +188,33 @@ app.get('/api/homeInfo', (req, res) => {
         }
     })
 })
+// -----------------------------------------------------UPDATE / PUT---------------------------------------------------
 
+app.put("/api/homeModif", (req, res) => {
+    const bodyTitle = req.body.bodyTitle;
+    const body1 = req.body.body1;
+    const footer1 = req.body.footer1;
+    const footer2 = req.body.footer2;
+    const footer3 = req.body.footer3;
+
+    db.query("UPDATE info_page SET bodyTitle = ?, body1 = ?, footer1 = ?, footer2 = ?, footer3 = ? WHERE id = 1",
+        [bodyTitle, body1, footer1, footer2, footer3],
+        (err, result) => {
+        if (err) {
+            console.log(err);
+        }else
+            res.send(result);
+    });
+});
+
+
+// ----------------------------------------------------DELETE / DELETE-------------------------------------------------
+
+
+
+//END CRUD
+
+//PORT SERVER API
 app.listen(3001, () => {
     console.log("server on port 3001");
 });

@@ -1,6 +1,8 @@
+// Formulaire de contact avec envoie par mail
+// imports des librairies
 import React, { useState } from "react";
 
-
+// fonction du formulaire de contact
 const Contact = () => {
     const [status, setStatus] = useState("Envoyer !");
     const handleSubmit = async (e) => {
@@ -12,6 +14,7 @@ const Contact = () => {
             email: email.value,
             message: message.value,
         };
+        // Envoie des infos vers l'API
         let response = await fetch("http://localhost:3001/contact", {
             method: "POST",
             headers: {
@@ -23,6 +26,8 @@ const Contact = () => {
         let result = await response.json();
         alert(result.status);
     };
+
+    // Affichage de la fonction Footer
     return (
         <form onSubmit={handleSubmit} className="contact-form">
             <h1>Une question ? Un avis ? Vous pouvez nous laissez un message en remplissant le formulaire ci-dessous : </h1>
@@ -43,4 +48,5 @@ const Contact = () => {
     );
 };
 
+//export pour routing
 export default Contact;

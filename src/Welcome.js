@@ -1,35 +1,28 @@
-import React, {useState} from "react";
+// Message de bienvenue modifiable par l'admin
+// imports des librairies
+import React, {useState, useEffect} from "react";
 import Axios from "axios";
 
+// fonction contenant le message d'accueil
 function Welcome (){
     const [Info, setInfo] = useState([]);
-    const getInfo = () => {
+
+    // requête à l'API GET (info de la page stocké en base de données)
+    useEffect(() => {
         Axios.get("http://localhost:3001/api/homeInfo").then((response) => {
             setInfo(response.data);
         });
-    };
-
+    });
+    // Affichage de la fonction Welcome
     return(
         <div className="body">
             <div  className="mainBody">
-                {getInfo()}
-                <div key="bodytitle" className="mainBodyTitle">
-
-                    {Info.map((val, key) =>{
-                        return(
-                            <div>{val.bodyTitle}</div>
-                        )
-                    })}
+                <div  className="mainBodyTitle">
+                    {Info.map((val) => { return (val.bodyTitle)})}
                 </div>
                 <br/>
-                <div key="bodytext" className="mainBodyText">
-
-                    {Info.map((val, key) =>{
-                        return(
-                        <div>{val.body1}</div>
-                        )
-                    })}
-
+                <div  className="mainBodyText">
+                    {Info.map((val) => { return (val.body1)})}
                 </div>
             </div>
             <div className="Carroussel">
@@ -38,5 +31,5 @@ function Welcome (){
         </div>
     )
 }
-
+//export pour routing
 export default Welcome;

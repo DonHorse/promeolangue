@@ -141,7 +141,7 @@ a.current{
   padding: 20px 0 20px 0;
 }
 .admin-form textarea{
-  min-height: 50px;
+  min-height: 100px;
   width: 296px;
   max-width: 296px;
   min-width: 296px;
