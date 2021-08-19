@@ -1,6 +1,9 @@
+// Formulaire de connexion à une session
+// imports des librairies
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 
+// fonction contenant le formulaire de login
 function Login() {
 
     const [email, setEmail] = useState("");
@@ -10,6 +13,7 @@ function Login() {
 
     Axios.defaults.withCredentials = true;
 
+    // requête à l'API POST (renvoie un user si connexion réussi)
     const login = () => {
 
         Axios.post("http://localhost:3001/login", {
@@ -23,7 +27,7 @@ function Login() {
             }
         });
     }
-
+    // requête à l'API GET (info si connexion)
     useEffect(() => {
         Axios.get("http://localhost:3001/login").then((response) => {
             if (response.data.loggedIn === true) {
@@ -31,7 +35,7 @@ function Login() {
             }
         });
     }, []);
-
+    // Affichage du formulaire
     return (
         <div className="login-form">
             <form>
@@ -61,4 +65,5 @@ function Login() {
 
     )
 }
+//export pour routing
 export default Login;

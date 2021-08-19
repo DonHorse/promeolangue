@@ -8,7 +8,7 @@ function ArticleMaker(){
     const [text, setText] = useState('')
 
     const addArticle = () => {
-        Axios.post("http://localhost:3001/api/insert", {
+        Axios.post("http://localhost:3001/api/newArticle", {
             title : title,
             img : img,
             text : text,
@@ -19,35 +19,43 @@ function ArticleMaker(){
 
     return(
         <form>
+            <h1>Nouvel article ! </h1>
             <div className="article-form">
-                <label htmlFor="title">Titre de l'article : </label>
-                <input
-                    type="text"
-                    name="title"
-                    id="title"
-                    onChange={(e) => {
-                        setTitle(e.target.value);
-                    }}/>
-                <label htmlFor="text">Ajouter une image : </label>
-                <input
-                    type="file"
-                    name="img"
-                    id="img"
-                    onChange={(e) => {
-                        setImg(e.target.value);
-                    }}/>
-                <label htmlFor="text">Contenu de l'article : </label>
-                <input
-                    type="text"
-                    name="text"
-                    id="text"
-                    onChange={(e) => {
-                        setText(e.target.value);
-                    }}/>
-
+                <div className="article-input">
+                    <label htmlFor="title"><h1>Titre de l'article : </h1></label>
+                    <textarea
+                        name="title"
+                        id="title"
+                        onChange={(e) => {
+                            setTitle(e.target.value);
+                        }}/>
+                </div>
+                <div className="article-input">
+                    <label htmlFor="url"><h1>Ajouter une image (lien) : </h1></label>
+                    <input
+                        type="url"
+                        name="img"
+                        id="img"
+                        onChange={(e) => {
+                            setImg(e.target.value);
+                        }}/>
+                </div>
+                <div className="article-input">
+                    <label htmlFor="text"><h1>Contenu de l'article :</h1></label>
+                    <textarea
+                        name="text"
+                        id="text"
+                        onChange={(e) => {
+                            setText(e.target.value);
+                        }}/>
+                </div>
+            </div>
+            <div className="admin-form">
                 <button onClick={addArticle}>Ajouter un article</button>
                 <input type="reset"/>
             </div>
+
+
         </form>
     )
 }

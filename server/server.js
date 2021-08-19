@@ -15,7 +15,7 @@ const nodemailer = require("nodemailer");
 app.use(express.json());
 app.use(cors({
         origin: ["http://localhost:3000"],
-        methods: ["GET", "POST", "UPDATE", "DELETE"],
+        methods: ["GET","HEAD","PUT","PATCH","POST","DELETE"],
         credentials: true,
     }
 ));
@@ -76,7 +76,7 @@ app.post("/contact", (req, res) => {
         from: name,
         to: "promeo.langue.dev@gmail.com",
         subject: "Promeo Langue - Contact message",
-        html: `<p>Mme/Mr {name}</p>
+        html: `<p>Mme/Mr ${name}</p>
            <p>Depuis l'adresse :  ${email}</p>
            <p>A laissé le message suivant: ${message}</p>`,
     };
@@ -90,7 +90,7 @@ app.post("/contact", (req, res) => {
 });
 
 
-app.post("/api/insert", (req, res) => {
+app.post("/api/newArticle", (req, res) => {
     const title = req.body.title;
     const img = req.body.img;
     const text = req.body.text;
@@ -145,7 +145,7 @@ app.post("/login", (req, res) => {
                 bcrypt.compare(password, result[0].password, (error, response) => {
                     if (response) {
                         req.session.user= result;
-                        console.log(req.session.user.email);
+                        console.log(req.session.user);
                         res.send(result);
 
                     } if (err) {
@@ -161,6 +161,16 @@ app.post("/login", (req, res) => {
 
 // ------------------------------------------------------READ / GET----------------------------------------------------
 
+app.get("/articleList", (req, res) => {
+    db.query("SELECT * FROM articles ORDER BY create-date ASC",
+        (err, result) => {
+        if (err){
+            console.log(err);
+        }else {
+            res.send(result);
+        }
+        })
+});
 
 app.get("/login", (req, res) => {
     if (req.session.user) {
@@ -170,14 +180,11 @@ app.get("/login", (req, res) => {
     }
 });
 
-/*app.get("/logout", (req, res) => {
-    res.redirect('/Login');
+app.get('/logout',(req,res) => {
     req.session.destroy();
     res.clearCookie("userId");
     res.send({ loggedIn: false });
-
 });
-*/
 
 app.get('/api/homeInfo', (req, res) => {
     db.query("SELECT * FROM info_page", (err, result) => {
@@ -190,12 +197,80 @@ app.get('/api/homeInfo', (req, res) => {
 })
 // -----------------------------------------------------UPDATE / PUT---------------------------------------------------
 
+app.put("/api/homeModif/title", (req, res) => {
+    const bodyTitle = req.body.bodyTitle;
+
+    db.query("UPDATE info_page SET bodyTitle = ? WHERE id = 1",
+        bodyTitle,
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            }else
+                res.send(result);
+        });
+});
+
+app.put("/api/homeModif/body1", (req, res) => {
+    const body1 = req.body.body1;
+
+    db.query("UPDATE info_page SET body1 = ? WHERE id = 1",
+        body1,
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            }else
+                res.send(result);
+        });
+});
+
+app.put("/api/homeModif/footer1", (req, res) => {
+    const footer1 = req.body.footer1;
+
+    db.query("UPDATE info_page SET footer1 = ? WHERE id = 1",
+        footer1,
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            }else
+                res.send(result);
+        });
+});
+
+app.put("/api/homeModif/footer2", (req, res) => {
+    const footer2 = req.body.footer2;
+
+    db.query("UPDATE info_page SET footer2 = ? WHERE id = 1",
+        footer2,
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            }else
+                res.send(result);
+        });
+});
+
+app.put("/api/homeModif/footer3", (req, res) => {
+    const footer3 = req.body.footer3;
+
+    db.query("UPDATE info_page SET footer3 = ? WHERE id = 1",
+        footer3,
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            }else
+                res.send(result);
+        });
+});
+
+/* code pour mass change :
+
 app.put("/api/homeModif", (req, res) => {
     const bodyTitle = req.body.bodyTitle;
     const body1 = req.body.body1;
     const footer1 = req.body.footer1;
     const footer2 = req.body.footer2;
     const footer3 = req.body.footer3;
+
 
     db.query("UPDATE info_page SET bodyTitle = ?, body1 = ?, footer1 = ?, footer2 = ?, footer3 = ? WHERE id = 1",
         [bodyTitle, body1, footer1, footer2, footer3],
@@ -206,7 +281,7 @@ app.put("/api/homeModif", (req, res) => {
             res.send(result);
     });
 });
-
+*/
 
 // ----------------------------------------------------DELETE / DELETE-------------------------------------------------
 

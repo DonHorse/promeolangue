@@ -3,8 +3,10 @@
 import React, {useState, useEffect} from "react";
 import Axios from "axios";
 
+
 // fonction contenant le message d'accueil
 function Welcome (){
+
     const [Info, setInfo] = useState([]);
 
     // requête à l'API GET (info de la page stocké en base de données)

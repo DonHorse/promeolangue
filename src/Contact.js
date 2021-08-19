@@ -27,19 +27,19 @@ const Contact = () => {
         alert(result.status);
     };
 
-    // Affichage de la fonction Footer
+    // Affichage du formulaire de Contact
     return (
         <form onSubmit={handleSubmit} className="contact-form">
             <h1>Une question ? Un avis ? Vous pouvez nous laissez un message en remplissant le formulaire ci-dessous : </h1>
-            <div>
+            <div className="contact-input">
                 <label htmlFor="name">Nom:</label>
                 <input type="text" id="name" required />
             </div>
-            <div>
-                <label htmlFor="email">Email:</label>
+            <div className="contact-input">
+                <label htmlFor="email">Votre Email:</label>
                 <input type="email" id="email" required />
             </div>
-            <div>
+            <div className="contact-input">
                 <label htmlFor="message">Message:</label>
                 <textarea id="message" required />
             </div>

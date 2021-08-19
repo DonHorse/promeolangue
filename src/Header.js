@@ -4,25 +4,28 @@ import { NavLink } from 'react-router-dom';
 import logo from './logo.png';
 import Axios from "axios";
 import React, {useEffect, useState} from "react";
-import {useHistory} from "react-router-dom";
 
-/*function Logout () {
 
-    Axios.defaults.withCredentials = true;
-    Axios.get("http://localhost:3001/logout").then((response) => {
-        if (response) {
-            console.log(response)
-        }
-    });
-};
-*/
+
+
 
 function Header(){
 
-    let history = useHistory();
     const [loginStat, setLoginStat] = useState(false);
 
     Axios.defaults.withCredentials = true;
+
+    const Logout = () => {
+
+        Axios.get("http://localhost:3001/logout").then((response) => {
+            if (response) {
+                setLoginStat(false);
+                console.log("logout");
+                window.location = "/";
+
+            }
+        });
+    };
 
     useEffect(() => {
         Axios.get("http://localhost:3001/login").then((response) => {
@@ -87,7 +90,7 @@ function Header(){
                                         </NavLink>
                                     )}
                                     {loginStat === true && (
-                                        <button onClick={() => history.push('/')} /*onClick={Logout}*/>Logout</button>
+                                        <button onClick={Logout}>Logout</button>
                                     )}
                                 <NavLink exact activeClassName="current" to="/Register">
                                     <li >Register</li>

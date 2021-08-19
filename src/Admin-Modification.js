@@ -16,23 +16,59 @@ function AdminForm(){
        Axios.get("http://localhost:3001/api/homeInfo").then((response) => {
            setPlaceholderInfo(response.data);
        });
-   })
+   });
 
-
-    const addAdminModif = () => {
-        Axios.put("http://localhost:3001/api/homeModif", {
+    const addAdminModifTitle = () => {
+        Axios.put('http://localhost:3001/api/homeModif/title', {
             bodyTitle : bodyTitle,
-            body1 : body1,
-            footer1 : footer1,
-            footer2 : footer2,
-            footer3 : footer3,
+    }).then((response) => {
+            alert("modifications enregistrées !");
+        }).catch((error) => {
+            console.log(error);
+        });
+    };
 
+    const addAdminModifBody1 = () => {
+        Axios.put('http://localhost:3001/api/homeModif/body1', {
+            body1 : body1
         }).then((response) => {
             alert("modifications enregistrées !");
         }).catch((error) => {
-            console.log(error.message);
+            console.log(error);
         });
     };
+
+    const addAdminModifFooter1 = () => {
+        Axios.put('http://localhost:3001/api/homeModif/footer1', {
+            footer1 : footer1
+        }).then((response) => {
+            alert("modifications enregistrées !");
+        }).catch((error) => {
+            console.log(error);
+        });
+    };
+
+    const addAdminModifFooter2 = () => {
+        Axios.put('http://localhost:3001/api/homeModif/footer2', {
+            footer2 : footer2
+        }).then((response) => {
+            alert("modifications enregistrées !");
+        }).catch((error) => {
+            console.log(error);
+        });
+    };
+
+    const addAdminModifFooter3 = () => {
+        Axios.put('http://localhost:3001/api/homeModif/footer3', {
+            footer3 : footer3
+        }).then((response) => {
+            alert("modifications enregistrées !");
+        }).catch((error) => {
+            console.log(error);
+        });
+    };
+
+
 
     return(
         <div className="admin-form">
@@ -46,6 +82,7 @@ function AdminForm(){
                     onChange={(e) => {
                         setBodyTitle(e.target.value);
                     }}/>
+                <button type="submit" onClick={addAdminModifTitle}>Valider les modifications</button>
 
                 <label htmlFor="text">Message d'accueil : </label>
                 <textarea
@@ -56,6 +93,7 @@ function AdminForm(){
                         setBody1(e.target.value);
                     }}
                 />
+                <button type="submit" onClick={addAdminModifBody1}>Valider les modifications</button>
 
                 <label htmlFor="text">Pied de page gauche : </label>
                 <textarea
@@ -65,6 +103,7 @@ function AdminForm(){
                     onChange={(e) => {
                         setFooter1(e.target.value);
                     }}/>
+                <button type="submit" onClick={addAdminModifFooter1}>Valider les modifications</button>
 
                 <label htmlFor="text">Pied de page centre : </label>
                 <textarea
@@ -74,6 +113,7 @@ function AdminForm(){
                     onChange={(e) => {
                         setFooter2(e.target.value);
                     }}/>
+                <button type="submit" onClick={addAdminModifFooter2}>Valider les modifications</button>
 
                 <label htmlFor="text">Pied de page droite : </label>
                 <textarea
@@ -83,8 +123,8 @@ function AdminForm(){
                     onChange={(e) => {
                         setFooter3(e.target.value);
                     }}/>
+                <button type="submit" onClick={addAdminModifFooter3}>Valider les modifications</button>
 
-                <button type="submit" onClick={addAdminModif}>Valider les modifications</button>
 
                 <input type="reset"/>
             </form>

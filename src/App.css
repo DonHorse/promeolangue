@@ -72,21 +72,21 @@ a.current{
   margin-bottom: 30px;
 }
 .article-form{
+  width: 90%%;
   display: flex;
   flex-direction: column;
-  margin-top: 5%;
-  margin-right: 40%;
-  margin-left: 40%;
-  border: solid black ;
-  padding: 10px;
-}
-.article-form input {
-  margin-bottom: 30px;
-}
-.article-form select {
-  margin-bottom: 30px;
-}
+  margin-bottom: 50px;
 
+}
+.article-form h1{
+  text-align: center;
+  color: #03353b;
+  font-size: 24px;
+  padding: 20px 0 20px 0;
+}
+.article-input{
+  margin: 5px;
+}
 
 .footer{
   overflow: hidden;
@@ -126,6 +126,7 @@ a.current{
   font-family: Tahoma, Geneva, sans-serif;
 
 }
+
 .contact-form{
   width: 70%;
   margin: 0 auto;
@@ -140,6 +141,14 @@ a.current{
   font-size: 24px;
   padding: 20px 0 20px 0;
 }
+
+
+.article-form textarea{
+  min-height: 100px;
+  width: 70%;
+  min-width: 296px;
+}
+
 .admin-form textarea{
   min-height: 100px;
   width: 296px;
@@ -182,6 +191,9 @@ a.current{
   cursor: pointer;
   font-weight: bold;
   color: #ffffff;
+}
+.contact-input{
+  margin : 2%
 }
 .mainBody{
 border-bottom: 5px solid rgba(9, 87, 118, 0.22);
