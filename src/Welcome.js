@@ -8,11 +8,18 @@ import Axios from "axios";
 function Welcome (){
 
     const [Info, setInfo] = useState([]);
+    const [Article, setArticle] = useState([]);
 
     // requête à l'API GET (info de la page stocké en base de données)
     useEffect(() => {
         Axios.get("http://localhost:3001/api/homeInfo").then((response) => {
             setInfo(response.data);
+        });
+    });
+
+    useEffect(() => {
+        Axios.get("http://localhost:3001/articleLast").then((response) => {
+            setArticle(response.data);
         });
     });
     // Affichage de la fonction Welcome
@@ -28,7 +35,20 @@ function Welcome (){
                 </div>
             </div>
             <div className="Carroussel">
-                <h1>Work in progress ... </h1>
+                {Article.map((val) => {return (
+                    <div>
+                        <div>
+                            {(val.img)}
+                        </div>
+                        <div>
+                            {(val.title)}
+                        </div>
+                        <div>
+                            {(val.text)}
+                        </div>
+                    </div>
+
+                )})}
             </div>
         </div>
     )

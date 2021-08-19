@@ -17,7 +17,7 @@ return(
     <div>
         <h1>Promeo news</h1>
 
-        {ArticleList.map((val, key) => {
+        {ArticleList.map((val) => {
             return(
             <div className="articles">
                 <img className="article-img" src={val.img} alt="article"/>

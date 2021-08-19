@@ -161,8 +161,20 @@ app.post("/login", (req, res) => {
 
 // ------------------------------------------------------READ / GET----------------------------------------------------
 
+
+app.get("/articleLast", (req, res) => {
+    db.query("SELECT * FROM articles ORDER BY create_date LIMIT 1",
+        (err, result) => {
+            if (err){
+                console.log(err);
+            }else {
+                res.send(result);
+            }
+        })
+});
+
 app.get("/articleList", (req, res) => {
-    db.query("SELECT * FROM articles ORDER BY create-date ASC",
+    db.query("SELECT * FROM articles ORDER BY create_date",
         (err, result) => {
         if (err){
             console.log(err);
