@@ -10,12 +10,10 @@ function Login() {
     const [password, setPassword] = useState("");
     const [loginStatus, setLoginStatus] = useState("");
 
-
     Axios.defaults.withCredentials = true;
 
     // requête à l'API POST (renvoie un user si connexion réussi)
     const login = () => {
-
         Axios.post("http://localhost:3001/login", {
             email: email,
             password: password,
@@ -62,8 +60,9 @@ function Login() {
             </div>
 
         </div>
-
     )
 }
 //export pour routing
 export default Login;
+
+// rajouté anti bot CAPTCHA

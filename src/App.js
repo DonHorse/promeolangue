@@ -1,3 +1,4 @@
+// import des librairies
 import './App.css';
 import Welcome from "./Welcome";
 import Articles from "./Article";
@@ -6,15 +7,15 @@ import Contact from "./Contact";
 import Register from "./Register";
 import Login from "./Login";
 import Questionnaire from "./Questionnaire";
+import QuestionReponse from "./Question-Reponse-form";
 import QuestionnaireMaker from "./QuestionnaireMaker";
 import Header from "./Header";
 import Footer from "./Footer";
 import AdminForm from "./Admin-Modification";
 
-
 import{BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
-
+// la fonction App est afficher sur le front end, et sert ici de page de routing
 function App() {
   return (
       <div className="App">
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/Questionnaire" component={Questionnaire}/>
                 <Route path="/Questionnaire/:slug" component={Questionnaire}/>
                 <Route path="/QuestionnaireMaker" component={QuestionnaireMaker}/>
+                <Route path="/QuestionnaireMaker2" component={QuestionReponse}/>
                 <Route path="/ArticleMaker" component={ArticleMaker}/>
                 <Route path="/Login" component={Login}/>
                 <Route path="/Register" component={Register}/>
@@ -46,5 +48,5 @@ function App() {
       </div>
   );
 }
-
+//export pour affichage front end
 export default App;

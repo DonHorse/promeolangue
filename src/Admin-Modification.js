@@ -1,8 +1,10 @@
+// Formulaire de modifications des infos page
+// imports des librairies
 import React, {useEffect, useState} from "react";
 import Axios from 'axios';
 import './App.css';
 
-
+// fonction contenant le formulaire de modification
 function AdminForm(){
 
     const [bodyTitle, setBodyTitle] = useState('');
@@ -12,16 +14,17 @@ function AdminForm(){
     const [footer3, setFooter3] = useState('');
     const [PlaceholderInfo, setPlaceholderInfo] = useState([])
 
-   useEffect(() => {
-       Axios.get("http://localhost:3001/api/homeInfo").then((response) => {
-           setPlaceholderInfo(response.data);
-       });
-   });
+    // requête à l'API POST (GET des messages en placeholder et UPDATE une fois validé (par secteur))
+    useEffect(() => {
+        Axios.get("http://localhost:3001/api/homeInfo").then((response) => {
+        setPlaceholderInfo(response.data);
+        });
+    });
 
     const addAdminModifTitle = () => {
         Axios.put('http://localhost:3001/api/homeModif/title', {
             bodyTitle : bodyTitle,
-    }).then((response) => {
+    }).then(() => {
             alert("modifications enregistrées !");
         }).catch((error) => {
             console.log(error);
@@ -31,7 +34,7 @@ function AdminForm(){
     const addAdminModifBody1 = () => {
         Axios.put('http://localhost:3001/api/homeModif/body1', {
             body1 : body1
-        }).then((response) => {
+        }).then(() => {
             alert("modifications enregistrées !");
         }).catch((error) => {
             console.log(error);
@@ -41,7 +44,7 @@ function AdminForm(){
     const addAdminModifFooter1 = () => {
         Axios.put('http://localhost:3001/api/homeModif/footer1', {
             footer1 : footer1
-        }).then((response) => {
+        }).then(() => {
             alert("modifications enregistrées !");
         }).catch((error) => {
             console.log(error);
@@ -51,7 +54,7 @@ function AdminForm(){
     const addAdminModifFooter2 = () => {
         Axios.put('http://localhost:3001/api/homeModif/footer2', {
             footer2 : footer2
-        }).then((response) => {
+        }).then(() => {
             alert("modifications enregistrées !");
         }).catch((error) => {
             console.log(error);
@@ -61,7 +64,7 @@ function AdminForm(){
     const addAdminModifFooter3 = () => {
         Axios.put('http://localhost:3001/api/homeModif/footer3', {
             footer3 : footer3
-        }).then((response) => {
+        }).then(() => {
             alert("modifications enregistrées !");
         }).catch((error) => {
             console.log(error);
@@ -69,7 +72,7 @@ function AdminForm(){
     };
 
 
-
+    // Affichage du formulaire
     return(
         <div className="admin-form">
             <form>
@@ -125,11 +128,10 @@ function AdminForm(){
                     }}/>
                 <button type="submit" onClick={addAdminModifFooter3}>Valider les modifications</button>
 
-
                 <input type="reset"/>
             </form>
         </div>
     )
 }
-
+//export pour routing
 export default AdminForm;

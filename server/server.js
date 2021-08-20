@@ -63,7 +63,7 @@ contactEmail.verify((error) => {
     }
 });
 
-// CRUD
+// -------------------------------------------------CRUD---------------------------------------------------------------
 
 // --------------------------------------------CREATE / POST-----------------------------------------------------------
 
@@ -98,6 +98,45 @@ app.post("/api/newArticle", (req, res) => {
     db.query(
         "INSERT INTO articles (title, img, text) VALUES (?,?,?)",
         [title, img, text],
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send("Ajouté !");
+            }
+        });
+});
+
+app.post("/api/newQuestionForm", (req, res) => {
+    const name = req.body.formname;
+    const language = req.body.language;
+    const creatorName = req.body.creatorName;
+    const creatorMail = req.body.creatorMail;
+
+    db.query(
+        "INSERT INTO questionnaires (name, language, creator_name, creator_mail) VALUES (?,?,?,?)",
+        [name, language, creatorName, creatorMail],
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send("Ajouté !");
+            }
+        });
+});
+
+app.post("/api/newQuestion", (req, res) => {
+    const question = req.body.question;
+    const reponse1 = req.body.reponse1;
+    const reponse2 = req.body.reponse2;
+    const reponse3 = req.body.reponse3;
+    const reponse4 = req.body.reponse4;
+    const correction = req.body.correction;
+    const Q_id = req.body.Qid;
+
+    db.query(
+        "INSERT INTO question_reponse (question, reponse_1, reponse_2, reponse_3, reponse_4, correct, questionnaire_id) VALUES (?,?,?,?,?,?,?)",
+        [question, reponse1, reponse2, reponse3, reponse4, correction, Q_id],
         (err, result) => {
             if (err) {
                 console.log(err);
@@ -162,8 +201,19 @@ app.post("/login", (req, res) => {
 // ------------------------------------------------------READ / GET----------------------------------------------------
 
 
+app.get("/api/getLastForm", (req, res) => {
+    db.query("SELECT id FROM questionnaires ORDER BY creation_date DESC LIMIT 1",
+        (err, result) => {
+            if (err){
+                console.log(err);
+            }else {
+                res.send(result);
+            }
+        })
+});
+
 app.get("/articleLast", (req, res) => {
-    db.query("SELECT * FROM articles ORDER BY create_date LIMIT 1",
+    db.query("SELECT * FROM articles ORDER BY create_date DESC LIMIT 1",
         (err, result) => {
             if (err){
                 console.log(err);
@@ -174,7 +224,7 @@ app.get("/articleLast", (req, res) => {
 });
 
 app.get("/articleList", (req, res) => {
-    db.query("SELECT * FROM articles ORDER BY create_date",
+    db.query("SELECT * FROM articles ORDER BY create_date DESC",
         (err, result) => {
         if (err){
             console.log(err);

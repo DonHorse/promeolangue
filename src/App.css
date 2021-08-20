@@ -1,3 +1,8 @@
+/* -----------Feuille de style principale servant pour toute l'application-----------------*/
+
+*{
+  font-family: Tahoma, Geneva, sans-serif;
+}
 .App {
   text-align: center;
   overflow: hidden;
@@ -5,7 +10,18 @@
   margin-top: 110px;
   margin-bottom: 100px;
 }
-
+h1{
+  text-align: center;
+  color: #03353b;
+  font-size: 30px;
+  padding: 20px 0 20px 0;
+}
+h2{
+  text-align: center;
+  color: #03353b;
+  font-size: 24px;
+  padding: 20px 0 20px 0;
+}
  img.logo {
    max-height: 110px;
    border-right: 1px solid white;
@@ -19,7 +35,6 @@
   position: fixed;
   top: 0;
   width: 100%;
-
  }
 a.current{
   background-color: #21a1d5;
@@ -48,7 +63,6 @@ a.current{
 
 .user-gestion-list{
   display: flex;
-
 }
 
 .user-gestion-list li{
@@ -71,12 +85,33 @@ a.current{
 .register-form select {
   margin-bottom: 30px;
 }
-.article-form{
-  width: 90%%;
+.articles{
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+  padding: 10px;
+  border: solid #095776 5px;
+  border-radius: 2px;
+}
+.article-content{
   display: flex;
   flex-direction: column;
-  margin-bottom: 50px;
+}
+.articles img{
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
 
+.article-form{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+  border-radius: 5px;
+  border: solid #095776 2px;
+  padding-bottom: 20px;
 }
 .article-form h1{
   text-align: center;
@@ -84,10 +119,20 @@ a.current{
   font-size: 24px;
   padding: 20px 0 20px 0;
 }
+.article-input input{
+  min-height: 50px;
+  width: 70%;
+  min-width: 296px;
+}
 .article-input{
   margin: 5px;
 }
 
+.Carroussel{
+  display: flex;
+  flex-direction: row;
+  margin-top: 5%;
+}
 .footer{
   overflow: hidden;
   background-color: red;
@@ -99,7 +144,6 @@ a.current{
   min-height: 50px;
   width: 100%;
   border-top: 5px solid #21a1d5;
-
 }
 
 .footer1{
@@ -124,29 +168,43 @@ a.current{
   width: 300px;
   margin: 0 auto;
   font-family: Tahoma, Geneva, sans-serif;
-
+  border-radius: 5px;
+  border: solid #095776 5px;
+  padding: 20px;
 }
 
 .contact-form{
   width: 70%;
   margin: 0 auto;
   font-family: Tahoma, Geneva, sans-serif;
+  border-radius: 5px;
+  border: solid #095776 5px;
+  padding: 20px;
+}
+.admin-form label{
+  text-align: center;
+  color: #095776;
+  font-size: 18px;
+  padding: 20px 0 20px 0;
+}
+.admin-form button{
+  margin-bottom: 25px;
 }
 
 .login-form h1,
 .contact-form h1,
 .registration-form h1{
   text-align: center;
-  color: #03353b;
+  color: #095776;
   font-size: 24px;
   padding: 20px 0 20px 0;
 }
-
 
 .article-form textarea{
   min-height: 100px;
   width: 70%;
   min-width: 296px;
+  max-width: 90%;
 }
 
 .admin-form textarea{
@@ -196,17 +254,17 @@ a.current{
   margin : 2%
 }
 .mainBody{
-border-bottom: 5px solid rgba(9, 87, 118, 0.22);
+  border-bottom: 5px solid rgba(9, 87, 118, 0.22);
 }
 
 .mainBodyTitle{
-font-size: 30px;
+  font-size: 30px;
 }
 
 .mainBodyText{
   text-align: justify;
-  margin-right: 10%;
-  margin-left: 10%;
-  margin-bottom: 5%;
+  margin-right: 20%;
+  margin-left: 20%;
   margin-top: 5%;
+  margin-bottom: 5%;
 }

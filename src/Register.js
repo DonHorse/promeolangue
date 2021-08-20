@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 import "./App.css";
 
+//export pour routing
 export default function Registration() {
     const [firstnameReg, setFirstnameReg] = useState("");
     const [lastnameReg, setLastnameReg] = useState("");
@@ -76,4 +77,4 @@ export default function Registration() {
 
 
 
-
+// rajouté anti bot CAPTCHA

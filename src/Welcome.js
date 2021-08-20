@@ -34,20 +34,23 @@ function Welcome (){
                     {Info.map((val) => { return (val.body1)})}
                 </div>
             </div>
-            <div className="Carroussel">
-                {Article.map((val) => {return (
-                    <div>
-                        <div>
-                            {(val.img)}
-                        </div>
-                        <div>
-                            {(val.title)}
-                        </div>
-                        <div>
-                            {(val.text)}
-                        </div>
-                    </div>
-
+            <div>
+                <h1>Promeo Last news</h1>
+                {Article.map((val) => {
+                    return(
+                            <div className="articles">
+                                <div>
+                                    <img className="article-img" src={val.img} alt="article"/>
+                                </div>
+                                <div className="article-content">
+                                    <div>
+                                        <h2>{val.title}</h2>
+                                    </div>
+                                    <div>
+                                        {(val.text)}
+                                    </div>
+                                </div>
+                            </div>
                 )})}
             </div>
         </div>
