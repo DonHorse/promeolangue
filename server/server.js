@@ -1,3 +1,5 @@
+// Page server, API, sert à faire le lien entre le front et le back : les requêtes sql et configurations de connexion sont ici
+
 // import des librairies
 const express = require("express");
 const app = express();
@@ -11,7 +13,7 @@ const saltRounds = 10;
 const nodemailer = require("nodemailer");
 
 
-// Paramétrages
+// Paramétrages server
 app.use(express.json());
 app.use(cors({
         origin: ["http://localhost:3000"],
@@ -54,7 +56,7 @@ const contactEmail = nodemailer.createTransport({
         rejectUnauthorized: false
     }
 });
-
+// Vérification de l'envoi des mail
 contactEmail.verify((error) => {
     if (error) {
         console.log(error);
@@ -324,7 +326,7 @@ app.put("/api/homeModif/footer3", (req, res) => {
         });
 });
 
-/* code pour mass change :
+/* code pour mass change infos page:
 
 app.put("/api/homeModif", (req, res) => {
     const bodyTitle = req.body.bodyTitle;
@@ -350,6 +352,7 @@ app.put("/api/homeModif", (req, res) => {
 
 
 //END CRUD
+
 
 //PORT SERVER API
 app.listen(3001, () => {

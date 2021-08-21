@@ -1,18 +1,17 @@
-
+// Bandeau menu supérieur
+// imports des librairies
 import './Header.css';
 import { NavLink } from 'react-router-dom';
 import logo from './logo.png';
 import Axios from "axios";
 import React, {useEffect, useState} from "react";
 
-
-
-
-
+// fonction contenant le header
 function Header(){
 
     const [loginStat, setLoginStat] = useState(false);
 
+    // requête à l'API GET (Gestion du statut Login ou logout)
     Axios.defaults.withCredentials = true;
 
     const Logout = () => {
@@ -38,7 +37,7 @@ function Header(){
     });
 
 
-
+    // Affichage des Navlink => App.js contient la gestion de ces Navlink = lien avec routing
     return(
         <div className="header">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
@@ -78,7 +77,6 @@ function Header(){
                                         </NavLink>
                                     </div>
                                 </div>
-
                             </ul>
                         </div>
 
@@ -103,4 +101,5 @@ function Header(){
 
     )
 }
+//export pour routing
 export default Header;

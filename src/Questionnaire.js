@@ -13,5 +13,5 @@ function Questionnaire(){
 
     )
 }
-
+//export pour routing
 export default Questionnaire;
