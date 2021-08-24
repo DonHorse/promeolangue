@@ -1,1 +1,2 @@
 - créer des hook perso pour les requêtes axios et éviter les redondance
+- Droit pour admin / user / prof
