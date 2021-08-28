@@ -1,5 +1,13 @@
+
+
+![image](https://user-images.githubusercontent.com/73821367/131225188-91e8bba7-b4b9-4ede-ae55-4fc7e7a9e583.png)
+
+
 # Application Promeo Langue
 
+Cette application web est un travail réalisé dans le cadre de la formation BTS SIO par Promeo Compiègne(60).
+
+Cette application est réalisé par Mr HERMEL Florian, étudiant au sein du BTS SIO section 22.
 
 
 # React js + Node JS Application : commencer
