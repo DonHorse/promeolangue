@@ -1,49 +1,23 @@
-// Formulaire de connexion à une session
+// Page d'affichage d'un questionnaire'
 // imports des librairies
-
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {useParams} from "react-router-dom";
 import Axios from "axios";
 
-// fonction contenant le formulaire de login
-function Questionnaire(){
-    const [Question, setQuestion] = useState("");
-    const [Reponse1, setReponse1] = useState("");
-    const [Reponse2, setReponse2] = useState("");
-    const [Reponse3, setReponse3] = useState("");
-    const [Reponse4, setReponse4] = useState("");
-    const [Correction, setCorrection] = useState();
 
-    const [Qid , setQid] = useState();
+// fonction contenant l'affichage du questionnaire
+function Questionnaire() {
 
-    // requête à l'API  (GET l'id du dernier formulaire, POST les questions)
-    useEffect(() => {
-        Axios.get("http://localhost:3001/api/getLastForm").then((response) => {
-            setQid(response.data[0].id);
-        });
-    });
+    let {slug} = useParams();
 
-    const addQuestion = () =>{
-        Axios.post("http://localhost:3001/api/newQuestion", {
-            question : Question,
-            reponse1 : Reponse1,
-            reponse2 : Reponse2,
-            reponse3 : Reponse3,
-            reponse4 : Reponse4,
-            correction : Correction,
-            Qid : Qid,
-        }).then(() => {
-            alert("Question enregistré !")
-        });
-    };
+    // requête à l'API GET (renvoie tous les infos du questionnaire et les questions)
 
-    // Affichage du formulaire
-    let {slug} = useParams()
-
+    // Formulaire à remplir
     return(
         <div>
-            <h1>Questionnaire {slug}</h1>
-            <p>Work in progress.. </p>
+            <h1>Questionnaire référence n°{slug}</h1>
+
+
         </div>
 
     )

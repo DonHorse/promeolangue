@@ -236,6 +236,17 @@ app.get("/articleList", (req, res) => {
         })
 });
 
+app.get("/questionnaireList", (req, res) => {
+    db.query("SELECT * FROM questionnaires ORDER BY creation_date DESC",
+        (err, result) => {
+            if (err){
+                console.log(err);
+            }else {
+                res.send(result);
+            }
+        })
+});
+
 app.get("/login", (req, res) => {
     if (req.session.user) {
         res.send({ loggedIn: true, user: req.session.user });

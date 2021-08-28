@@ -12,6 +12,7 @@ import QuestionnaireMaker from "./QuestionnaireMaker";
 import Header from "./Header";
 import Footer from "./Footer";
 import AdminForm from "./Admin-Modification";
+import QuestionnaireList from "./Questionnaire-List";
 
 import{BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
@@ -31,8 +32,8 @@ function App() {
                 <Route path="/" exact component={Welcome}/>
                 <Route path="/Article" component={Articles}/>
                 <Route path="/Contact" component={Contact}/>
-                <Route path="/Questionnaire" component={Questionnaire}/>
-                <Route path="/Questionnaire/:slug" component={Questionnaire}/>
+                <Route path="/QuestionnaireList" component={QuestionnaireList}/>
+                <Route path="/Questionnaire/:slug" exact component={Questionnaire}/>
                 <Route path="/QuestionnaireMaker" component={QuestionnaireMaker}/>
                 <Route path="/QuestionnaireMaker2" component={QuestionReponse}/>
                 <Route path="/ArticleMaker" component={ArticleMaker}/>
