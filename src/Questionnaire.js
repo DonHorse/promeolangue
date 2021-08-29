@@ -120,6 +120,11 @@ function Questionnaire() {
                                             }}
                                             onChange={(e) => {
                                                 setUserRep(e.target.value);
+                                                if (UserRep == TrueRep){
+                                                score += 1
+                                                };
+                                                setTrueRep();
+                                                setUserRep();
                                             }}
                                         >
                                             <option value="" selected disabled hidden> Sélectionner la bonne réponse </option>
