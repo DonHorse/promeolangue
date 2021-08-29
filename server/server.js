@@ -78,7 +78,7 @@ app.post("/questionnaireSend", (req, res) => {
     const correctorMail = req.body.CorrectorMail;
     const mail = {
         from: name,
-        to: "promeo.langue.dev@gmail.com",
+        to: correctorMail,
         subject: "Promeo Langue - Correction message",
         html: `<p>Mme/Mr ${name} ${firstname}</p>
            <p>Adresse mail :  ${email}</p>
