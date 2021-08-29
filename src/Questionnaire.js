@@ -35,18 +35,18 @@ function Questionnaire() {
 
         });
     });
-
+        const corectorMail = Questionnaire[6];
         const [status, setStatus] = useState("Envoyer vos réponse!");
         const handleSubmit = async (e) => {
             e.preventDefault();
             setStatus("Sending...");
-            const { Nom, Prenom, Mail } = [Nom, Prenom, Mail];
             let details = {
                 Nom: Nom.value,
                 Prenom: Prenom.value,
                 Mail: Mail.value,
                 score : score.value,
                 count : count.value,
+                CorrectorMail : corectorMail.value,
             };
             // Envoie des infos vers l'API
             let response = await fetch("http://localhost:3001/questionnaireSend", {
@@ -122,7 +122,7 @@ function Questionnaire() {
                                             }}
                                             onChange={(e) => {
                                                 setUserRep(e.target.value);
-                                                if (UserRep == TrueRep){
+                                                if (UserRep === TrueRep){
                                                 score += 1
                                                 };
                                                 setTrueRep();
