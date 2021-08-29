@@ -45,6 +45,8 @@ function Questionnaire() {
                 Nom: Nom.value,
                 Prenom: Prenom.value,
                 Mail: Mail.value,
+                score : score.value,
+                count : count.value,
             };
             // Envoie des infos vers l'API
             let response = await fetch("http://localhost:3001/questionnaireSend", {

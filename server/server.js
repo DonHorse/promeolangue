@@ -73,13 +73,15 @@ app.post("/questionnaireSend", (req, res) => {
     const name = req.body.Nom;
     const firstname = req.body.Prenom;
     const email = req.body.Mail;
+    const score = req.body.score;
+    const count = req.body.count;
     const mail = {
         from: name,
         to: "promeo.langue.dev@gmail.com",
         subject: "Promeo Langue - Contact message",
         html: `<p>Mme/Mr ${name} ${firstname}</p>
            <p>Adresse mail :  ${email}</p>
-           <p> A soumis un questionnaire</p>`,
+           <p> A soumis un questionnaire avec un résultat de ${score} sur ${count}</p>`,
         attachments: [{
 
         }]
