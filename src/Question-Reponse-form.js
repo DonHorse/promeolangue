@@ -98,6 +98,7 @@ const QuestionReponse = () => {
                         id="bonne-reponse"
                         onChange={(e) => {
                             setCorrection(e.target.value); }}>
+                        <option value="" selected disabled hidden>Sélectionner la bonne réponse</option>
                         <option value={1}> 1 </option>
                         <option value={2}> 2 </option>
                         <option value={3}> 3 </option>

@@ -69,6 +69,29 @@ contactEmail.verify((error) => {
 
 // --------------------------------------------CREATE / POST-----------------------------------------------------------
 
+app.post("/questionnaireSend", (req, res) => {
+    const name = req.body.Nom;
+    const firstname = req.body.Prenom;
+    const email = req.body.Mail;
+    const mail = {
+        from: name,
+        to: "promeo.langue.dev@gmail.com",
+        subject: "Promeo Langue - Contact message",
+        html: `<p>Mme/Mr ${name} ${firstname}</p>
+           <p>Adresse mail :  ${email}</p>
+           <p> A soumis un questionnaire</p>`,
+        attachments: [{
+
+        }]
+    };
+    contactEmail.sendMail(mail, (error) => {
+        if (error) {
+            res.json({ status: "ERROR" });
+        } else {
+            res.json({ status: "Message Sent" });
+        }
+    });
+});
 
 app.post("/contact", (req, res) => {
     const name = req.body.name;
@@ -243,6 +266,32 @@ app.get("/questionnaireList", (req, res) => {
                 console.log(err);
             }else {
                 res.send(result);
+            }
+        })
+});
+
+app.get("/questionnaire/:Qid", (req, res) => {
+    const Qid = req.params.Qid;
+    db.query("SELECT * FROM questionnaires WHERE id = ?", Qid,
+        (err, result) => {
+            if (err){
+                console.log(err);
+            }else {
+                res.send(result);
+
+            }
+        })
+});
+
+app.get("/question/:Qid", (req, res) => {
+    const Qid = req.params.Qid;
+    db.query("SELECT * FROM question_reponse WHERE questionnaire_id = ?", Qid,
+        (err, result) => {
+            if (err){
+                console.log(err);
+            }else {
+                res.send(result);
+
             }
         })
 });

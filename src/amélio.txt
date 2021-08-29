@@ -1,3 +1,4 @@
-- créer des hook perso pour les requêtes axios et éviter les redondance
+- créer des custom HOOK pour les requêtes Axios et éviter les redondance
 - Droit pour admin / user / prof
 - questionnaire pdf mail
+- prendre les onfos utilisateur pour préremplir les champs de questionnaire demandant les infos personnel (nom prénom mail .. )
